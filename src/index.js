@@ -29,6 +29,7 @@ export default class Dailymotion extends React.Component {
     showEndScreen: React.PropTypes.bool,
     id: React.PropTypes.string,
     mute: React.PropTypes.bool,
+    volume: React.PropTypes.number,
     origin: React.PropTypes.string,
     quality: React.PropTypes.oneOf(['240', '380', '480', '720', '1080', '1440', '2160']),
     sharing: React.PropTypes.bool,
@@ -85,6 +86,12 @@ export default class Dailymotion extends React.Component {
     this.player = loadApi().then(DM =>
       DM.player(this.container, this.getInitialOptions())
     );
+
+    if (typeof this.props.volume === 'number') {
+      this.player.then(player => {
+        player.setVolume(this.props.volume);
+      });
+    }
   }
 
   refContainer = container => {
