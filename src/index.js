@@ -21,11 +21,16 @@ function loadApi(apiKey) {
   return apiPromise;
 }
 
+const sizePropType = React.PropTypes.oneOfType([
+  React.PropTypes.number,
+  React.PropTypes.string
+]);
+
 export default class Dailymotion extends React.Component {
   static propTypes = {
     video: React.PropTypes.string,
-    width: React.PropTypes.string,
-    height: React.PropTypes.string,
+    width: sizePropType,
+    height: sizePropType,
 
     // Player parameters
     autoplay: React.PropTypes.bool,
@@ -33,7 +38,6 @@ export default class Dailymotion extends React.Component {
     showEndScreen: React.PropTypes.bool,
     id: React.PropTypes.string,
     mute: React.PropTypes.bool,
-    volume: React.PropTypes.number,
     origin: React.PropTypes.string,
     quality: React.PropTypes.oneOf(['240', '380', '480', '720', '1080', '1440', '2160']),
     sharing: React.PropTypes.bool,
@@ -44,6 +48,9 @@ export default class Dailymotion extends React.Component {
     uiShowLogo: React.PropTypes.bool,
     uiShowStartScreenInfo: React.PropTypes.bool,
     theme: React.PropTypes.oneOf(['light', 'dark']),
+
+    // Player properties (not parameters, can only be set using methods)
+    volume: React.PropTypes.number,
 
     // Events
     onAdEnd: React.PropTypes.func,
