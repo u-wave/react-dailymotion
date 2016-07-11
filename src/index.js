@@ -56,9 +56,9 @@ export default class Dailymotion extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const changes = Object.keys(this.props).filter(name => {
-      return this.props[name] !== prevProps[name];
-    });
+    const changes = Object.keys(this.props).filter(
+      name => this.props[name] !== prevProps[name]
+    );
 
     this.updateProps(changes);
   }
@@ -98,21 +98,23 @@ export default class Dailymotion extends React.Component {
       propNames.forEach(name => {
         const value = this.props[name];
         switch (name) {
-        case 'muted':
-          player.setMuted(value);
-          break;
-        case 'quality':
-          player.setQuality(value);
-          break;
-        case 'subtitles':
-          player.setSubtitle(value);
-          break;
-        case 'volume':
-          player.setVolume(value);
-          break;
-        case 'video':
-          player.load(value, this.getPlayerParameters());
-          break;
+          case 'muted':
+            player.setMuted(value);
+            break;
+          case 'quality':
+            player.setQuality(value);
+            break;
+          case 'subtitles':
+            player.setSubtitle(value);
+            break;
+          case 'volume':
+            player.setVolume(value);
+            break;
+          case 'video':
+            player.load(value, this.getPlayerParameters());
+            break;
+          default:
+            // Nothing
         }
       });
     });
@@ -120,7 +122,7 @@ export default class Dailymotion extends React.Component {
 
   createPlayer() {
     this.player = loadApi().then(DM =>
-      new Promise((resolve, reject) => {
+      new Promise(resolve => {
         const player = DM.player(this.container, this.getInitialOptions());
         player.addEventListener('apiready', () => {
           resolve(player);
