@@ -55,31 +55,67 @@ export default class Dailymotion extends React.Component {
     this.createPlayer();
   }
 
+  componentDidUpdate(prevProps) {
+    const changes = Object.keys(this.props).filter(name => {
+      return this.props[name] !== prevProps[name];
+    });
+
+    this.updateProps(changes);
+  }
+
+  getPlayerParameters() {
+    return {
+      autoplay: this.props.autoplay,
+      controls: this.props.controls,
+      'endscreen-enable': this.props.showEndScreen,
+      id: this.props.id,
+      mute: this.props.mute,
+      origin: this.props.origin,
+      quality: this.props.quality,
+      'sharing-enable': this.props.sharing,
+      start: this.props.start,
+      'subtitles-default': this.props.subtitles,
+      syndication: this.props.syndication,
+      'ui-highlight': this.props.uiHighlightColor,
+      'ui-logo': this.props.uiShowLogo,
+      'ui-start-screen-info': this.props.uiShowStartScreenInfo,
+      'ui-theme': this.props.theme,
+    };
+  }
+
   getInitialOptions() {
     return {
       video: this.props.video,
       width: this.props.width,
       height: this.props.height,
-      params: {
-        autoplay: this.props.autoplay,
-        controls: this.props.controls,
-        'endscreen-enable': this.props.showEndScreen,
-        id: this.props.id,
-        mute: this.props.mute,
-        origin: this.props.origin,
-        quality: this.props.quality,
-        'sharing-enable': this.props.sharing,
-        start: this.props.start,
-        'subtitles-default': this.props.subtitles,
-        syndication: this.props.syndication,
-        'ui-highlight': this.props.uiHighlightColor,
-        'ui-logo': this.props.uiShowLogo,
-        'ui-start-screen-info': this.props.uiShowStartScreenInfo,
-        'ui-theme': this.props.theme,
-      },
-      events: {
-      },
+      params: this.getPlayerParameters(),
+      events: {},
     };
+  }
+
+  updateProps(propNames) {
+    this.player.then(player => {
+      propNames.forEach(name => {
+        const value = this.props[name];
+        switch (name) {
+        case 'muted':
+          player.setMuted(value);
+          break;
+        case 'quality':
+          player.setQuality(value);
+          break;
+        case 'subtitles':
+          player.setSubtitle(value);
+          break;
+        case 'volume':
+          player.setVolume(value);
+          break;
+        case 'video':
+          player.load(value, this.getPlayerParameters());
+          break;
+        }
+      });
+    });
   }
 
   createPlayer() {
@@ -93,9 +129,7 @@ export default class Dailymotion extends React.Component {
     );
 
     if (typeof this.props.volume === 'number') {
-      this.player.then(player => {
-        player.setVolume(this.props.volume);
-      });
+      this.updateProps(['volume']);
     }
   }
 
