@@ -1,6 +1,8 @@
 import * as React from 'react';
 import loadScript from 'load-script';
 
+import eventNames from './eventNames';
+
 let apiPromise = false;
 
 function loadApi(apiKey) {
@@ -24,6 +26,8 @@ export default class Dailymotion extends React.Component {
     video: React.PropTypes.string,
     width: React.PropTypes.string,
     height: React.PropTypes.string,
+
+    // Player parameters
     autoplay: React.PropTypes.bool,
     controls: React.PropTypes.bool,
     showEndScreen: React.PropTypes.bool,
@@ -40,6 +44,35 @@ export default class Dailymotion extends React.Component {
     uiShowLogo: React.PropTypes.bool,
     uiShowStartScreenInfo: React.PropTypes.bool,
     theme: React.PropTypes.oneOf(['light', 'dark']),
+
+    // Events
+    onAdEnd: React.PropTypes.func,
+    onAdPause: React.PropTypes.func,
+    onAdPlay: React.PropTypes.func,
+    onAdStart: React.PropTypes.func,
+    onAdTimeUpdate: React.PropTypes.func,
+    onApiReady: React.PropTypes.func,
+    onDurationChange: React.PropTypes.func,
+    onEnd: React.PropTypes.func,
+    onError: React.PropTypes.func,
+    onFullscreenChange: React.PropTypes.func,
+    onLoadedMetadata: React.PropTypes.func,
+    onPause: React.PropTypes.func,
+    onPlay: React.PropTypes.func,
+    onPlaying: React.PropTypes.func,
+    onProgress: React.PropTypes.func,
+    onQualitiesAvailable: React.PropTypes.func,
+    onQualityChange: React.PropTypes.func,
+    onSeeked: React.PropTypes.func,
+    onSeeking: React.PropTypes.func,
+    onSubtitleChange: React.PropTypes.func,
+    onSubtitlesAvailable: React.PropTypes.func,
+    onStart: React.PropTypes.func,
+    onTimeUpdate: React.PropTypes.func,
+    onVideoStart: React.PropTypes.func,
+    onVideoEnd: React.PropTypes.func,
+    onVolumeChange: React.PropTypes.func,
+    onWaiting: React.PropTypes.func,
   };
 
   static defaultProps = {
@@ -126,6 +159,15 @@ export default class Dailymotion extends React.Component {
         const player = DM.player(this.container, this.getInitialOptions());
         player.addEventListener('apiready', () => {
           resolve(player);
+        });
+
+        Object.keys(eventNames).forEach(dmName => {
+          const reactName = eventNames[dmName];
+          player.addEventListener(dmName, event => {
+            if (this.props[reactName]) {
+              this.props[reactName](event);
+            }
+          });
         });
       })
     );
