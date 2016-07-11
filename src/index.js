@@ -84,7 +84,12 @@ export default class Dailymotion extends React.Component {
 
   createPlayer() {
     this.player = loadApi().then(DM =>
-      DM.player(this.container, this.getInitialOptions())
+      new Promise((resolve, reject) => {
+        const player = DM.player(this.container, this.getInitialOptions());
+        player.addEventListener('apiready', () => {
+          resolve(player);
+        });
+      })
     );
 
     if (typeof this.props.volume === 'number') {
