@@ -5,14 +5,13 @@ import eventNames from './eventNames';
 
 let apiPromise = false;
 
-function loadApi(apiKey) {
+function loadApi() {
   if (!apiPromise) {
     apiPromise = new Promise((resolve, reject) => {
       loadScript('https://api.dmcdn.net/all.js', (err) => {
         if (err) {
           reject(err);
         } else {
-          window.DM.init({ apiKey });
           resolve(window.DM);
         }
       });
@@ -83,13 +82,8 @@ export default class Dailymotion extends React.Component {
   };
 
   static defaultProps = {
-    apiKey: null,
     theme: 'dark',
   };
-
-  static setApiKey(apiKey) {
-    Dailymotion.defaultProps.apiKey = apiKey;
-  }
 
   componentDidMount() {
     this.createPlayer();
