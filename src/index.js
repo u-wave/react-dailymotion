@@ -27,7 +27,7 @@ function loadApi() {
 
 const sizePropType = React.PropTypes.oneOfType([
   React.PropTypes.number,
-  React.PropTypes.string
+  React.PropTypes.string,
 ]);
 
 export default class Dailymotion extends React.Component {
@@ -155,7 +155,7 @@ export default class Dailymotion extends React.Component {
           case 'width':
           case 'height':
             // The Dailymotion Player object is also the player iframe.
-            player[name] = value;
+            player[name] = value; // eslint-disable-line no-param-reassign
             break;
           case 'video':
             player.load(value, this.getPlayerParameters());

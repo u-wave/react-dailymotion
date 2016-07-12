@@ -6,8 +6,9 @@
   "scripts": {
     "prepublish": "npm run build",
     "build": "gulp build",
-    "lint": "eslint gulpfile.js src",
-    "test": "npm run lint && mocha"
+    "lint": "eslint gulpfile.js src example/app.js",
+    "test": "npm run lint && mocha",
+    "example": "npm install && cd example && npm install"
   },
   "repository": {
     "type": "git",
