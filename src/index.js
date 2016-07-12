@@ -7,15 +7,20 @@ let apiPromise = false;
 
 function loadApi() {
   if (!apiPromise) {
-    apiPromise = new Promise((resolve, reject) => {
-      loadScript('https://api.dmcdn.net/all.js', (err) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(window.DM);
-        }
+    if (typeof window.DM === 'object' && typeof window.DM.player === 'function') {
+      // A Dailymotion SDK is already loaded, so reuse that
+      apiPromise = Promise.resolve(window.DM);
+    } else {
+      apiPromise = new Promise((resolve, reject) => {
+        loadScript('https://api.dmcdn.net/all.js', (err) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(window.DM);
+          }
+        });
       });
-    });
+    }
   }
   return apiPromise;
 }
