@@ -33,6 +33,8 @@ const sizePropType = React.PropTypes.oneOfType([
 export default class Dailymotion extends React.Component {
   static propTypes = {
     video: React.PropTypes.string,
+    id: React.PropTypes.string,
+    className: React.PropTypes.string,
     width: sizePropType,
     height: sizePropType,
 
@@ -40,7 +42,6 @@ export default class Dailymotion extends React.Component {
     autoplay: React.PropTypes.bool,
     controls: React.PropTypes.bool,
     showEndScreen: React.PropTypes.bool,
-    id: React.PropTypes.string,
     mute: React.PropTypes.bool,
     origin: React.PropTypes.string,
     quality: React.PropTypes.oneOf(['240', '380', '480', '720', '1080', '1440', '2160']),
@@ -149,6 +150,13 @@ export default class Dailymotion extends React.Component {
           case 'volume':
             player.setVolume(value);
             break;
+          case 'id':
+          case 'className':
+          case 'width':
+          case 'height':
+            // The Dailymotion Player object is also the player iframe.
+            player[name] = value;
+            break;
           case 'video':
             player.load(value, this.getPlayerParameters());
             break;
@@ -189,6 +197,8 @@ export default class Dailymotion extends React.Component {
 
   render() {
     return React.createElement('div', {
+      id: this.props.id,
+      className: this.props.className,
       ref: this.refContainer,
     });
   }
