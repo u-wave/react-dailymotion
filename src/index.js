@@ -1,29 +1,7 @@
 import * as React from 'react';
-import loadScript from 'load-script';
 
 import eventNames from './eventNames';
-
-let apiPromise = false;
-
-function loadApi() {
-  if (!apiPromise) {
-    if (typeof window.DM === 'object' && typeof window.DM.player === 'function') {
-      // A Dailymotion SDK is already loaded, so reuse that
-      apiPromise = Promise.resolve(window.DM);
-    } else {
-      apiPromise = new Promise((resolve, reject) => {
-        loadScript('https://api.dmcdn.net/all.js', (err) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(window.DM);
-          }
-        });
-      });
-    }
-  }
-  return apiPromise;
-}
+import loadSdk from './loadSdk';
 
 export default class Dailymotion extends React.Component {
   static propTypes = {
@@ -344,7 +322,7 @@ export default class Dailymotion extends React.Component {
    * @private
    */
   createPlayer() {
-    this.player = loadApi().then(DM =>
+    this.player = loadSdk().then(DM =>
       new Promise(resolve => {
         const player = DM.player(this.container, this.getInitialOptions());
         player.addEventListener('apiready', () => {
