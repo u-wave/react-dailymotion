@@ -101,7 +101,7 @@ export default class Dailymotion extends React.Component {
      * section](https://developer.dailymotion.com/player#player-customisation)
      * in the Dailymotion docs for more on how this option is actually used.
      */
-    theme: React.PropTypes.oneOf(['light', 'dark']),
+    uiTheme: React.PropTypes.oneOf(['light', 'dark']),
 
     // Player properties (not parameters, can only be set using methods)
 
@@ -230,7 +230,7 @@ export default class Dailymotion extends React.Component {
   };
 
   static defaultProps = {
-    theme: 'dark',
+    uiTheme: 'dark',
   };
 
   componentDidMount() {
@@ -264,7 +264,7 @@ export default class Dailymotion extends React.Component {
       'ui-highlight': this.props.uiHighlightColor,
       'ui-logo': this.props.uiShowLogo,
       'ui-start-screen-info': this.props.uiShowStartScreenInfo,
-      'ui-theme': this.props.theme,
+      'ui-theme': this.props.uiTheme,
     };
   }
 

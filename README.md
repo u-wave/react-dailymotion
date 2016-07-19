@@ -46,7 +46,7 @@ import Dailymotion from 'react-dailymotion';
 | uiHighlightColor | string |  | Change the default highlight colour used in the controls (hex value). See [the player customisation section](https://developer.dailymotion.com/player#player-customisation) in the Dailymotion docs for more on how this option is actually used. |
 | uiShowLogo | bool |  | Whether to display the Dailymotion logo or not. |
 | uiShowStartScreenInfo | bool |  | Whether to show video information (title and owner) on the start screen. |
-| theme | enum:<br>&nbsp;'light'<br>&nbsp;'dark'<br> | 'dark' | Choose the default base colour theme. See [the player customisation section](https://developer.dailymotion.com/player#player-customisation) in the Dailymotion docs for more on how this option is actually used. |
+| uiTheme | enum:<br>&nbsp;'light'<br>&nbsp;'dark'<br> | 'dark' | Choose the default base colour theme. See [the player customisation section](https://developer.dailymotion.com/player#player-customisation) in the Dailymotion docs for more on how this option is actually used. |
 | volume | number |  | Sets the player's volume to the specified level, a number between 0 and 1. |
 | onAdEnd | function |  | Sent when the player reaches the end of an Ad media resource. |
 | onAdPause | function |  | Sent when an Ad playback pauses. |
