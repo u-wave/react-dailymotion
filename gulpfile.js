@@ -7,11 +7,39 @@ const through = require('through2');
 const log = require('gulp-util').log;
 const colors = require('gulp-util').colors;
 const relative = require('path').relative;
+const rollup = require('rollup').rollup;
+const rollupBabel = require('rollup-plugin-babel');
+const readFileSync = require('fs').readFileSync;
+const joinpath = require('path').join;
+const meta = require('./package.json');
 
 const src = 'src/**/*.js';
 const dest = 'lib/';
 
-gulp.task('default', ['build']);
+gulp.task('default', ['build', 'dist']);
+
+// build a babel config that works for the rollup babel plugin
+function rollupBabelConfig() {
+  const babelrc = readFileSync(joinpath(__dirname, '.babelrc'), 'utf8');
+  const babelConfig = JSON.parse(babelrc);
+  babelConfig.presets[0] = 'es2015-rollup';
+  babelConfig.babelrc = false;
+  return babelConfig;
+}
+
+gulp.task('dist', () =>
+  rollup({
+    entry: './src/index.js',
+    plugins: [
+      rollupBabel(rollupBabelConfig()),
+    ],
+    external: Object.keys(meta.dependencies),
+  }).then(bundle => bundle.write({
+    format: 'cjs',
+    exports: 'named',
+    dest: 'lib/rollup.js',
+  }))
+);
 
 gulp.task('build', () =>
   gulp.src(src)

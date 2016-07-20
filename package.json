@@ -2,7 +2,7 @@
   "name": "react-dailymotion",
   "version": "0.1.0",
   "description": "Dailymotion player component for React.",
-  "main": "lib/index.js",
+  "main": "lib/rollup.js",
   "scripts": {
     "prepublish": "npm run build",
     "build": "gulp build",
@@ -39,6 +39,7 @@
     "babel-plugin-syntax-async-functions": "^6.8.0",
     "babel-plugin-transform-class-properties": "^6.10.2",
     "babel-preset-es2015": "^6.9.0",
+    "babel-preset-es2015-rollup": "^1.1.1",
     "babel-preset-react": "^6.11.1",
     "babel-register": "^6.9.0",
     "doctrine": "^1.2.2",
@@ -62,6 +63,8 @@
     "react-docgen": "^2.9.1",
     "react-dom": "^15.2.1",
     "regenerator-runtime": "^0.9.5",
+    "rollup": "^0.34.1",
+    "rollup-plugin-babel": "^2.6.1",
     "through2": "^2.0.1"
   }
 }

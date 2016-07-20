@@ -25,7 +25,7 @@ export default function createDailymotion() {
     player: createSpy().andReturn(playerMock),
   };
 
-  const Dailymotion = proxyquire('../../', {
+  const Dailymotion = proxyquire('../../lib/index.js', {
     './loadSdk': {
       default: () => Promise.resolve(sdkMock),
     },
