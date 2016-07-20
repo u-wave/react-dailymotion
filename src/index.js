@@ -289,7 +289,7 @@ export default class Dailymotion extends React.Component {
       propNames.forEach(name => {
         const value = this.props[name];
         switch (name) {
-          case 'muted':
+          case 'mute':
             player.setMuted(value);
             break;
           case 'quality':
