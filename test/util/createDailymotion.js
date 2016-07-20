@@ -31,5 +31,5 @@ export default function createDailymotion() {
     },
   }).default;
 
-  return { Dailymotion, sdkMock, playerMock }
+  return { Dailymotion, sdkMock, playerMock };
 }

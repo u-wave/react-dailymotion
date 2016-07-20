@@ -6,7 +6,7 @@
   "scripts": {
     "prepublish": "npm run build",
     "build": "gulp build",
-    "lint": "eslint gulpfile.js src example/app.js tools",
+    "lint": "eslint gulpfile.js src example/app.js tools test",
     "test": "npm run lint && mocha",
     "docs": "node tools/generate-docs.js > generated-docs.md",
     "example": "npm install && cd example && npm install"

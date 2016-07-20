@@ -18,24 +18,24 @@ const render = (props) => {
   let component;
   // Emulate changes to component.props using a container component's state
   class Container extends React.Component {
-    constructor(props) {
-      super(props);
+    constructor(dmProps) {
+      super(dmProps);
 
-      this.state = props;
+      this.state = dmProps;
     }
 
     render() {
       return (
         <Dailymotion
           ref={dailymotion => { component = dailymotion; }}
-          { ...this.state }
+          {...this.state}
         />
       );
     }
   }
 
   const div = document.createElement('div');
-  const container = ReactDOM.render(<Container { ...props } />, div);
+  const container = ReactDOM.render(<Container {...props} />, div);
 
   function rerender(newProps) {
     return new Promise(resolve => {
