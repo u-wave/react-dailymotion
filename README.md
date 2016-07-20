@@ -19,7 +19,7 @@ import Dailymotion from 'react-dailymotion';
 
 <Dailymotion
   video="x2to0hs"
-  theme="light"
+  uiTheme="light"
   autoplay
 />
 ```
