@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^6.1.2",
+    "babel-plugin-external-helpers": "^6.8.0",
     "babel-plugin-syntax-async-functions": "^6.8.0",
     "babel-plugin-transform-class-properties": "^6.10.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.2.9",
