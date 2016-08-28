@@ -3,7 +3,7 @@ import * as React from 'react';
 import eventNames from './eventNames';
 import loadSdk from './loadSdk';
 
-export default class Dailymotion extends React.Component {
+class Dailymotion extends React.Component {
   static propTypes = {
     /**
      * A string representing a video ID – of the form xID (e.g. xwr14q) for
@@ -360,3 +360,5 @@ export default class Dailymotion extends React.Component {
     });
   }
 }
+
+export default Dailymotion;
