@@ -27,7 +27,7 @@ const render = (props) => {
     render() {
       return (
         <Dailymotion
-          ref={dailymotion => { component = dailymotion; }}
+          ref={(dailymotion) => { component = dailymotion; }}
           {...this.state}
         />
       );
@@ -35,14 +35,17 @@ const render = (props) => {
   }
 
   const div = document.createElement('div');
-  const container = ReactDOM.render(<Container {...props} />, div);
+  const container = new Promise((resolve) => {
+    ReactDOM.render(<Container {...props} ref={resolve} />, div);
+  });
 
   function rerender(newProps) {
-    return new Promise(resolve => {
-      container.setState(newProps, () => {
-        Promise.resolve().then(resolve);
-      });
-    });
+    return container.then(wrapper =>
+      new Promise((resolve) => {
+        wrapper.setState(newProps, () => {
+          Promise.resolve().then(resolve);
+        });
+      }));
   }
 
   function unmount() {

@@ -8,6 +8,10 @@
     "postinstall": "npm run build",
     "build": "browserify -t babelify -e app.js > bundle.js"
   },
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
   "devDependencies": {
     "babelify": "^7.3.0",
     "browserify": "^13.0.1"

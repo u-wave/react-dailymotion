@@ -16,7 +16,7 @@ function generatePropType(type) {
     case 'custom':
       return type.raw;
     case 'enum': {
-      const values = type.value.map((v) => v.value).join('<br>&nbsp;');
+      const values = type.value.map(v => v.value).join('<br>&nbsp;');
       return `enum:<br>&nbsp;${values}<br>`;
     }
     default:
@@ -31,7 +31,7 @@ function generateDescription(required, description, type) {
   // must be eliminated to prevent markdown mayhem.
   const jsDocText = parsed.description.replace(/\n\n/g, '<br>').replace(/\n/g, ' ');
 
-  if (parsed.tags.some((tag) => tag.title === 'ignore')) {
+  if (parsed.tags.some(tag => tag.title === 'ignore')) {
     return null;
   }
   let signature = '';
@@ -62,9 +62,9 @@ function generateDescription(required, description, type) {
     }
 
     signature += '<br><br>**Signature:**<br>`function(';
-    signature += parsedArgs.map((tag) => `${tag.name}: ${tag.type.name}`).join(', ');
+    signature += parsedArgs.map(tag => `${tag.name}: ${tag.type.name}`).join(', ');
     signature += `) => ${parsedReturns.type.name}\`<br>`;
-    signature += parsedArgs.map((tag) => `*${tag.name}:* ${tag.description}`).join('<br>');
+    signature += parsedArgs.map(tag => `*${tag.name}:* ${tag.description}`).join('<br>');
     if (parsedReturns.description) {
       signature += `<br> *returns* (${parsedReturns.type.name}): ${parsedReturns.description}`;
     }
@@ -74,19 +74,17 @@ function generateDescription(required, description, type) {
 }
 
 function render(code) {
-  let requiredProps = 0;
-
   let text = '| Name | Type | Default | Description |\n' +
              '|:-----|:-----|:-----|:-----|\n';
 
   const componentInfo = parse(code);
 
-  for (let key of Object.keys(componentInfo.props)) {
+  Object.keys(componentInfo.props).forEach((key) => {
     const prop = componentInfo.props[key];
 
     const description = generateDescription(prop.required, prop.description, prop.type);
 
-    if (description === null) continue;
+    if (description === null) return;
 
     let defaultValue = '';
 
@@ -95,12 +93,11 @@ function render(code) {
     }
 
     if (prop.required) {
-      key = `<span style="color: #31a148">${key} \*</span>`;
-      requiredProps += 1;
+      key = `<span style="color: #31a148">${key} *</span>`; // eslint-disable-line no-param-reassign
     }
 
     text += `| ${key} | ${generatePropType(prop.type)} | ${defaultValue} | ${description} |\n`;
-  }
+  });
 
   return text;
 }

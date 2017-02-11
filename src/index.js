@@ -112,6 +112,7 @@ class Dailymotion extends React.Component {
     volume: React.PropTypes.number,
 
     // Events
+    /* eslint-disable react/no-unused-prop-types */
 
     /**
      * Sent when the player reaches the end of an Ad media resource.
@@ -227,6 +228,8 @@ class Dailymotion extends React.Component {
      * content.
      */
     onWaiting: React.PropTypes.func,
+
+    /* eslint-enable react/no-unused-prop-types */
   };
 
   static defaultProps = {
@@ -239,8 +242,7 @@ class Dailymotion extends React.Component {
 
   componentDidUpdate(prevProps) {
     const changes = Object.keys(this.props).filter(
-      name => this.props[name] !== prevProps[name]
-    );
+      name => this.props[name] !== prevProps[name]);
 
     this.updateProps(changes);
   }
@@ -285,8 +287,8 @@ class Dailymotion extends React.Component {
    * @private
    */
   updateProps(propNames) {
-    this.player.then(player => {
-      propNames.forEach(name => {
+    this.player.then((player) => {
+      propNames.forEach((name) => {
         const value = this.props[name];
         switch (name) {
           case 'mute':
@@ -323,21 +325,21 @@ class Dailymotion extends React.Component {
    */
   createPlayer() {
     this.player = loadSdk().then(DM =>
-      new Promise(resolve => {
+      new Promise((resolve) => {
         const player = DM.player(this.container, this.getInitialOptions());
         player.addEventListener('apiready', () => {
           resolve(player);
         });
 
-        Object.keys(eventNames).forEach(dmName => {
+        Object.keys(eventNames).forEach((dmName) => {
           const reactName = eventNames[dmName];
-          player.addEventListener(dmName, event => {
+          player.addEventListener(dmName, (event) => {
             if (this.props[reactName]) {
               this.props[reactName](event);
             }
           });
         });
-      })
+      }),
     );
 
     if (typeof this.props.volume === 'number') {
@@ -348,7 +350,7 @@ class Dailymotion extends React.Component {
   /**
    * @private
    */
-  refContainer = container => {
+  refContainer = (container) => {
     this.container = container;
   };
 
