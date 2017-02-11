@@ -1,3 +1,4 @@
+/* global document */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Dailymotion from '../';
@@ -21,13 +22,13 @@ class App extends React.Component {
     this.setState({ video: index });
   }
 
-  handleVolume = event => {
+  handleVolume = (event) => {
     this.setState({
       volume: parseFloat(event.target.value),
     });
   };
 
-  handleQuality = event => {
+  handleQuality = (event) => {
     this.setState({
       quality: qualities[event.target.selectedIndex],
     });

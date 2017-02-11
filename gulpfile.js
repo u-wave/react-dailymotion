@@ -25,8 +25,7 @@ function rollupBabelConfig() {
   babelConfig.presets[0] = ['es2015', { loose: true, modules: false }];
   babelConfig.plugins.push(
     'external-helpers',
-    ['transform-react-remove-prop-types', { mode: 'wrap' }]
-  );
+    ['transform-react-remove-prop-types', { mode: 'wrap' }]);
   babelConfig.babelrc = false;
   return babelConfig;
 }
@@ -42,8 +41,7 @@ gulp.task('dist', () =>
     format: 'cjs',
     exports: 'named',
     dest: 'lib/rollup.js',
-  }))
-);
+  })));
 
 gulp.task('build', () =>
   gulp.src(src)
@@ -55,8 +53,7 @@ gulp.task('build', () =>
       cb(null, file);
     }))
     .pipe(babel())
-    .pipe(gulp.dest(dest))
-);
+    .pipe(gulp.dest(dest)));
 
 gulp.task('watch', ['build'], () => {
   watch(src, () => {
