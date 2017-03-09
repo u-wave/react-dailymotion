@@ -3,6 +3,7 @@
   "version": "0.2.1",
   "description": "Dailymotion player component for React.",
   "main": "lib/rollup.js",
+  "module": "lib/rollup.es.js",
   "scripts": {
     "prepublish": "npm run build",
     "build": "gulp",

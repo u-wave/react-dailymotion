@@ -37,11 +37,17 @@ gulp.task('dist', () =>
       rollupBabel(rollupBabelConfig()),
     ],
     external: Object.keys(meta.dependencies),
-  }).then(bundle => bundle.write({
-    format: 'cjs',
-    exports: 'named',
-    dest: 'lib/rollup.js',
-  })));
+  }).then(bundle => Promise.all([
+    bundle.write({
+      format: 'cjs',
+      exports: 'named',
+      dest: 'lib/rollup.js',
+    }),
+    bundle.write({
+      format: 'es',
+      dest: 'lib/rollup.es.js',
+    }),
+  ])));
 
 gulp.task('build', () =>
   gulp.src(src)
