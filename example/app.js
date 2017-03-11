@@ -16,11 +16,25 @@ class App extends React.Component {
     video: 0,
     quality: 'auto',
     volume: 1,
+    paused: false,
   };
 
   selectVideo(index) {
     this.setState({ video: index });
   }
+
+  handlePause = (event) => {
+    this.setState({
+      paused: event.target.checked,
+    });
+  };
+
+  handlePlayerPause = () => {
+    this.setState({ paused: true });
+  };
+  handlePlayerPlay = () => {
+    this.setState({ paused: false });
+  };
 
   handleVolume = (event) => {
     this.setState({
@@ -51,6 +65,18 @@ class App extends React.Component {
               </a>
             ))}
           </div>
+          <h3>Paused</h3>
+          <p>
+            <input
+              type="checkbox"
+              id="paused"
+              checked={this.state.paused}
+              onChange={this.handlePause}
+            />
+            <label htmlFor="paused">
+              Paused
+            </label>
+          </p>
           <h3>Volume</h3>
           <input
             type="range"
@@ -79,6 +105,9 @@ class App extends React.Component {
             controls={false}
             quality={this.state.quality}
             volume={this.state.volume}
+            paused={this.state.paused}
+            onPause={this.handlePlayerPause}
+            onPlay={this.handlePlayerPlay}
           />
         </div>
       </div>

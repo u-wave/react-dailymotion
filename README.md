@@ -33,6 +33,7 @@ import Dailymotion from 'react-dailymotion';
 | className | string |  | CSS className for the player element. |
 | width | union |  | Width of the player element. |
 | height | union |  | Height of the player element. |
+| paused | bool |  | Pause the video. |
 | autoplay | bool |  | Starts the playback of the video automatically after the player loads. |
 | controls | bool |  | Whether to display the player controls or not. This parameter only removes the control bar, but keeps the startscreen and the endscreen (useful on mobile devices where the video tag needs a direct user interaction to start the playback). |
 | showEndScreen | bool |  | Whether to enable the end screen or not. |
