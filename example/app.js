@@ -4,9 +4,9 @@ import * as ReactDOM from 'react-dom';
 import Dailymotion from '../';
 
 const videos = [
-  { id: 'x3pn5cb', name: '4Minute - Hate' },
-  { id: 'x2y5kn2', name: 'Jambinai - Time of Extinction' },
-  { id: 'x2y5kyu', name: 'Jambinai - Connection' },
+  { id: 'x26ezrb', name: 'Hackathon BeMyApp/Dailymotion' },
+  { id: 'x26ezj5', name: 'Greetings' },
+  { id: 'x26m1j4', name: 'Wildlife' },
 ];
 
 const qualities = ['auto', '240', '380', '480', '720', '1080', '1440', '2160'];
