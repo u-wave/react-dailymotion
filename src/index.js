@@ -34,6 +34,11 @@ class Dailymotion extends React.Component {
       React.PropTypes.string,
     ]),
 
+    /**
+     * Pause the video.
+     */
+    paused: React.PropTypes.bool, // eslint-disable-line react/no-unused-prop-types
+
     // Player parameters
 
     /**
@@ -302,6 +307,13 @@ class Dailymotion extends React.Component {
             break;
           case 'volume':
             player.setVolume(value);
+            break;
+          case 'paused':
+            if (value && !player.paused) {
+              player.pause();
+            } else if (!value && player.paused) {
+              player.play();
+            }
             break;
           case 'id':
           case 'className':

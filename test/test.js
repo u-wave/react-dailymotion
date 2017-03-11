@@ -39,6 +39,23 @@ describe('Dailymotion', () => {
     expect(playerMock.load.calls[0].arguments[0]).toEqual('x3pn5cb');
   });
 
+  it('should pause the video using the "paused" prop', async () => {
+    const { playerMock, rerender } = await render({
+      video: 'x2y5kyu',
+      autoplay: true,
+    });
+
+    // Don't call `play` again when we were already playing
+    await rerender({ paused: false });
+    expect(playerMock.play).toNotHaveBeenCalled();
+
+    await rerender({ paused: true });
+    expect(playerMock.pause).toHaveBeenCalled();
+
+    await rerender({ paused: false });
+    expect(playerMock.play).toHaveBeenCalled();
+  });
+
   it('should set the volume using the "volume" prop', async () => {
     const { playerMock, rerender } = await render({
       video: 'x2y5kyu',

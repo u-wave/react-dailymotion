@@ -2,6 +2,8 @@ import { createSpy } from 'expect';
 import proxyquire from 'proxyquire';
 
 export default function createDailymotion() {
+  let isPaused = true;
+
   const playerMock = {
     addEventListener: createSpy().andCall((eventName, fn) => {
       if (eventName === 'apiready') fn();
@@ -11,8 +13,17 @@ export default function createDailymotion() {
     setVolume: createSpy(),
     setQuality: createSpy(),
     load: createSpy(),
+    play: createSpy().andCall(() => {
+      isPaused = false;
+    }),
+    pause: createSpy().andCall(() => {
+      isPaused = true;
+    }),
     setWidth: createSpy(),
     setHeight: createSpy(),
+    get paused() {
+      return isPaused;
+    },
     set width(width) {
       playerMock.setWidth(width);
     },
@@ -22,7 +33,11 @@ export default function createDailymotion() {
   };
 
   const sdkMock = {
-    player: createSpy().andReturn(playerMock),
+    player: createSpy().andCall((container, options) => {
+      isPaused = !options.params.autoplay;
+
+      return playerMock;
+    }),
   };
 
   const Dailymotion = proxyquire('../../lib/index.js', {
