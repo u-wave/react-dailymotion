@@ -40,7 +40,7 @@ export default function createDailymotion() {
     }),
   };
 
-  const Dailymotion = proxyquire('../../lib/index.js', {
+  const Dailymotion = proxyquire('../../src/index.js', {
     './loadSdk': {
       default: () => Promise.resolve(sdkMock),
     },
