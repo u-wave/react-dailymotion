@@ -77,6 +77,10 @@ import Dailymotion from 'react-dailymotion';
 | onVolumeChange | function |  | Sent when the player volume or mute state has changed. |
 | onWaiting | function |  | Sent when the player has to stop video playback for further buffering of content. |
 
+## Related
+
+ - [@u-wave/react-youtube][] - A YouTube component with a similar API.
+
 ## License
 
 [MIT]
@@ -87,3 +91,4 @@ import Dailymotion from 'react-dailymotion';
 [Demo]: https://u-wave.github.io/react-dailymotion
 [Demo source code]: ./example
 [MIT]: ./LICENSE
+[@u-wave/react-youtube]: https://github.com/u-wave/react-youtube
