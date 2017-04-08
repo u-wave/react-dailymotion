@@ -367,11 +367,13 @@ class Dailymotion extends React.Component {
   };
 
   render() {
-    return React.createElement('div', {
-      id: this.props.id,
-      className: this.props.className,
-      ref: this.refContainer,
-    });
+    return (
+      <div
+        id={this.props.id}
+        className={this.props.className}
+        ref={this.refContainer}
+      />
+    );
   }
 }
 
