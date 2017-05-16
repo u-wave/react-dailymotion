@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createRenderer } from 'react-addons-test-utils';
+import ShallowRenderer from 'react-test-renderer/shallow';
 import expect from 'expect';
 import render from './util/render';
 import createDailymotion from './util/createDailymotion';
@@ -7,7 +7,7 @@ import createDailymotion from './util/createDailymotion';
 describe('Dailymotion', () => {
   it('should render a div with an ID and className', () => {
     const { Dailymotion } = createDailymotion();
-    const renderer = createRenderer();
+    const renderer = new ShallowRenderer();
     renderer.render(<Dailymotion id="myId" className="myClassName" />);
     expect(renderer.getRenderOutput()).toMatch({
       type: 'div',
