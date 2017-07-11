@@ -323,7 +323,13 @@ class Dailymotion extends React.Component {
             player[name] = value; // eslint-disable-line no-param-reassign
             break;
           case 'video':
-            player.load(value, this.getPlayerParameters());
+            if (value) {
+              player.load(value, this.getPlayerParameters());
+            } else {
+              // This is just about the closest thing to an `unload()` the
+              // Dailymotion SDK has, as far as I can tell…
+              player.pause();
+            }
             break;
           default:
             // Nothing

@@ -47,6 +47,9 @@ describe('Dailymotion', () => {
     expect(playerMock.pause).toNotHaveBeenCalled();
 
     await rerender({ video: null });
+
+    expect(playerMock.pause).toHaveBeenCalled();
+
     await rerender({ video: 'x3pn5cb' });
   });
 
