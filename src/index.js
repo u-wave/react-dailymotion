@@ -68,7 +68,7 @@ class Dailymotion extends React.Component {
     /**
      * Specifies the _suggested_ playback quality for the video.
      */
-    quality: PropTypes.oneOf(['240', '380', '480', '720', '1080', '1440', '2160']),
+    quality: PropTypes.oneOf(['auto', '240', '380', '480', '720', '1080', '1440', '2160']),
     /**
      * Whether to display the sharing button or not.
      */
@@ -239,6 +239,7 @@ class Dailymotion extends React.Component {
 
   static defaultProps = {
     uiTheme: 'dark',
+    quality: 'auto',
   };
 
   componentDidMount() {
