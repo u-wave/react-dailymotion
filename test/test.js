@@ -39,6 +39,17 @@ describe('Dailymotion', () => {
     expect(playerMock.load.calls[0].arguments[0]).toEqual('x3pn5cb');
   });
 
+  it('should unload when "video" prop changes to null', async () => {
+    const { playerMock, rerender } = await render({
+      video: 'x2y5kyu',
+    });
+    expect(playerMock.load).toNotHaveBeenCalled();
+    expect(playerMock.pause).toNotHaveBeenCalled();
+
+    await rerender({ video: null });
+    await rerender({ video: 'x3pn5cb' });
+  });
+
   it('should pause the video using the "paused" prop', async () => {
     const { playerMock, rerender } = await render({
       video: 'x2y5kyu',
