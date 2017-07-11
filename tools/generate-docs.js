@@ -108,4 +108,5 @@ const source = fs.readFileSync('src/index.js', 'utf8')
   .replace('* as React', 'React');
 const markdown = render(source);
 
+// eslint-disable-next-line no-console
 console.log(markdown);

@@ -1,6 +1,6 @@
 /* global document */
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import Dailymotion from '../';
 
 const videos = [
