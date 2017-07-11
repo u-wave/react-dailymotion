@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import expect from 'expect';
 import render from './util/render';
