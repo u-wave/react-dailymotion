@@ -62,7 +62,7 @@
     "react-dom": "^15.2.1",
     "react-test-renderer": "^15.6.1",
     "regenerator-runtime": "^0.10.5",
-    "rollup": "^0.45.2",
+    "rollup": "^0.46.0",
     "rollup-plugin-babel": "^3.0.1",
     "through2": "^2.0.1"
   }
