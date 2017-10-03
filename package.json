@@ -55,7 +55,7 @@
     "eslint-plugin-react": "^7.3.0",
     "expect": "^1.20.2",
     "global": "^4.3.1",
-    "mocha": "^3.5.3",
+    "mocha": "^4.0.0",
     "proxyquire": "^1.8.0",
     "react": "^16.0.0",
     "react-docgen": "^2.18.0",
