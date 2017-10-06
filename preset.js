@@ -3,10 +3,7 @@ module.exports = (babel, options) => {
   const tests = options && options.tests;
 
   const modules = rollup ? false : 'commonjs';
-  const plugins = [
-    'transform-class-properties',
-    ['transform-react-remove-prop-types', { mode: 'wrap' }],
-  ];
+  const plugins = [];
 
   if (rollup) {
     plugins.push('external-helpers');
