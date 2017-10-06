@@ -12,11 +12,6 @@ export default {
   external: Object.keys(meta.dependencies)
     .concat(Object.keys(meta.peerDependencies)),
   plugins: [
-    babel({
-      babelrc: false,
-      presets: [
-        [require.resolve('./preset'), { rollup: true }],
-      ],
-    }),
+    babel(),
   ],
 };
