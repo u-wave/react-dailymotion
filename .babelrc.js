@@ -7,18 +7,14 @@ const plugins = [];
 if (rollup) {
   plugins.push('external-helpers');
 }
-if (tests) {
-  plugins.push(
-    'syntax-async-functions',
-    ['transform-regenerator', { async: true }]
-  );
-}
 
 module.exports = {
   presets: [
-    ['es2015', {
+    ['env', {
       loose: true,
       modules,
+      targets: tests ? { node: 'current' } : {},
+      forceAllTransforms: rollup,
     }],
     'react',
   ],
