@@ -6,7 +6,7 @@
  */
 
 const fs = require('fs');
-const parse = require('react-docgen').parse;
+const docgen = require('react-docgen');
 const parseDoctrine = require('doctrine').parse;
 
 function generatePropType(type) {
@@ -77,7 +77,7 @@ function render(code) {
   let text = '| Name | Type | Default | Description |\n' +
              '|:-----|:-----|:-----|:-----|\n';
 
-  const componentInfo = parse(code);
+  const componentInfo = docgen.parse(code);
 
   Object.keys(componentInfo.props).forEach((key) => {
     const prop = componentInfo.props[key];

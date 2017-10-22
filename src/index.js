@@ -15,8 +15,7 @@ class Dailymotion extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const changes = Object.keys(this.props).filter(
-      name => this.props[name] !== prevProps[name]);
+    const changes = Object.keys(this.props).filter(name => this.props[name] !== prevProps[name]);
 
     this.updateProps(changes);
   }
@@ -126,8 +125,7 @@ class Dailymotion extends React.Component {
             }
           });
         });
-      }),
-    );
+      }));
 
     if (typeof this.props.volume === 'number') {
       this.updateProps(['volume']);
