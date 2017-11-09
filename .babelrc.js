@@ -10,6 +10,7 @@ module.exports = {
       modules,
       targets: tests ? { node: 'current' } : {},
       forceAllTransforms: rollup,
+      exclude: ['transform-regenerator'],
     }],
     '@babel/react',
   ],
