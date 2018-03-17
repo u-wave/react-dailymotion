@@ -1,6 +1,6 @@
 {
   "name": "react-dailymotion",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Dailymotion player component for React.",
   "main": "lib/rollup.js",
   "module": "lib/rollup.es.js",
