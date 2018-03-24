@@ -1,5 +1,7 @@
 # react-dailymotion
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/u-wave/react-dailymotion.svg)](https://greenkeeper.io/)
+
 Dailymotion player component for React.
 
 [Install] - [Usage] - [Demo] - [Props]
