@@ -3,7 +3,7 @@ sudo: false
 before_install:
   - npm install --global npm
 node_js:
+  - 'stable'
   - 8
-  - 7
   - 6
   - 4
