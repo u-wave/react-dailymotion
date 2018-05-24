@@ -6,14 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "npm run build",
-    "build": "babel app.js | browserify - > bundle.js"
+    "build": "browserify app.js -t babelify > bundle.js"
   },
   "dependencies": {
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^7.0.0-beta.3",
-    "browserify": "^13.0.1"
+    "@babel/core": "7.0.0-beta.47",
+    "babelify": "^9.0.0",
+    "browserify": "^16.2.2"
   }
 }

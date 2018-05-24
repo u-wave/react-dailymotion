@@ -2,7 +2,7 @@
 
 Dailymotion player component for React.
 
-[Install] - [Usage] - [Demo] - [Props]
+[Install][] - [Usage][] - [Demo][] - [Props][]
 
 ## Install
 
@@ -12,7 +12,7 @@ npm install --save react-dailymotion
 
 ## Usage
 
-[Demo] - [Demo source code]
+[Demo][] - [Demo source code][]
 
 ```js
 import Dailymotion from 'react-dailymotion';
@@ -84,12 +84,12 @@ import Dailymotion from 'react-dailymotion';
 
 ## License
 
-[MIT]
+[MIT][]
 
 [Install]: #install
 [Usage]: #usage
 [Props]: #props
-[Demo]: https://u-wave.github.io/react-dailymotion
+[Demo]: https://u-wave.net/raect-dailymotion
 [Demo source code]: ./example
 [MIT]: ./LICENSE
 [@u-wave/react-youtube]: https://github.com/u-wave/react-youtube
