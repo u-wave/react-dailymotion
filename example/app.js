@@ -1,7 +1,7 @@
 /* global document */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Dailymotion from '../';
+import Dailymotion from '..';
 
 const videos = [
   { id: 'x26ezrb', name: 'Hackathon BeMyApp/Dailymotion' },
@@ -16,7 +16,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      video: 0,
+      videoIndex: 0,
       quality: 'auto',
       volume: 1,
       paused: false,
@@ -30,7 +30,7 @@ class App extends React.Component {
   }
 
   selectVideo(index) {
-    this.setState({ video: index });
+    this.setState({ videoIndex: index });
   }
 
   handlePause(event) {
@@ -42,6 +42,7 @@ class App extends React.Component {
   handlePlayerPause() {
     this.setState({ paused: true });
   }
+
   handlePlayerPlay() {
     this.setState({ paused: false });
   }
@@ -59,11 +60,17 @@ class App extends React.Component {
   }
 
   render() {
-    const video = videos[this.state.video];
+    const {
+      videoIndex, paused, volume, quality,
+    } = this.state;
+
+    const video = videos[videoIndex];
     return (
       <div className="row">
         <div className="col s3">
-          <h3>Video</h3>
+          <h3>
+            Video
+          </h3>
           <div className="collection">
             {videos.map((choice, index) => (
               <a
@@ -75,29 +82,39 @@ class App extends React.Component {
               </a>
             ))}
           </div>
-          <h3>Paused</h3>
+          <h3>
+            Paused
+          </h3>
           <p>
             <input
               type="checkbox"
               id="paused"
-              checked={this.state.paused}
+              checked={paused}
               onChange={this.handlePause}
             />
-            <label htmlFor="paused">Paused</label>
+            <label htmlFor="paused">
+              Paused
+            </label>
           </p>
-          <h3>Volume</h3>
+          <h3>
+            Volume
+          </h3>
           <input
             type="range"
-            value={this.state.volume}
+            value={volume}
             min={0}
             max={1}
             step={0.01}
             onChange={this.handleVolume}
           />
-          <h3>Quality</h3>
+          <h3>
+            Quality
+          </h3>
           <select className="browser-default" onChange={this.handleQuality}>
-            {qualities.map(quality => (
-              <option value={quality}>{quality}</option>
+            {qualities.map(option => (
+              <option value={option}>
+                {option}
+              </option>
             ))}
           </select>
         </div>
@@ -111,9 +128,9 @@ class App extends React.Component {
             sharing={false}
             uiShowStartScreenInfo={false}
             controls={false}
-            quality={this.state.quality}
-            volume={this.state.volume}
-            paused={this.state.paused}
+            quality={quality}
+            volume={volume}
+            paused={paused}
             onPause={this.handlePlayerPause}
             onPlay={this.handlePlayerPlay}
           />
