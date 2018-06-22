@@ -15,6 +15,7 @@ class Dailymotion extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    // eslint-disable-next-line react/destructuring-assignment
     const changes = Object.keys(this.props).filter(name => this.props[name] !== prevProps[name]);
 
     this.updateProps(changes);
@@ -24,6 +25,7 @@ class Dailymotion extends React.Component {
    * @private
    */
   getPlayerParameters() {
+    /* eslint-disable react/destructuring-assignment */
     return {
       autoplay: this.props.autoplay,
       controls: this.props.controls,
@@ -41,12 +43,14 @@ class Dailymotion extends React.Component {
       'ui-start-screen-info': this.props.uiShowStartScreenInfo,
       'ui-theme': this.props.uiTheme,
     };
+    /* eslint-enable react/destructuring-assignment */
   }
 
   /**
    * @private
    */
   getInitialOptions() {
+    /* eslint-disable react/destructuring-assignment */
     return {
       video: this.props.video,
       width: this.props.width,
@@ -54,6 +58,7 @@ class Dailymotion extends React.Component {
       params: this.getPlayerParameters(),
       events: {},
     };
+    /* eslint-enable react/destructuring-assignment */
   }
 
   /**
@@ -62,6 +67,7 @@ class Dailymotion extends React.Component {
   updateProps(propNames) {
     this.player.then((player) => {
       propNames.forEach((name) => {
+        // eslint-disable-next-line react/destructuring-assignment
         const value = this.props[name];
         switch (name) {
           case 'mute':
@@ -110,24 +116,30 @@ class Dailymotion extends React.Component {
    * @private
    */
   createPlayer() {
-    this.player = loadSdk().then(DM =>
-      new Promise((resolve) => {
-        const player = DM.player(this.container, this.getInitialOptions());
+    const { volume } = this.props;
+
+    this.player = loadSdk().then((DM) => {
+      const player = DM.player(this.container, this.getInitialOptions());
+
+      Object.keys(eventNames).forEach((dmName) => {
+        const reactName = eventNames[dmName];
+        player.addEventListener(dmName, (event) => {
+          // eslint-disable-next-line react/destructuring-assignment
+          const handler = this.props[reactName];
+          if (handler) {
+            handler(event);
+          }
+        });
+      });
+
+      return new Promise((resolve) => {
         player.addEventListener('apiready', () => {
           resolve(player);
         });
+      });
+    });
 
-        Object.keys(eventNames).forEach((dmName) => {
-          const reactName = eventNames[dmName];
-          player.addEventListener(dmName, (event) => {
-            if (this.props[reactName]) {
-              this.props[reactName](event);
-            }
-          });
-        });
-      }));
-
-    if (typeof this.props.volume === 'number') {
+    if (typeof volume === 'number') {
       this.updateProps(['volume']);
     }
   }
@@ -140,10 +152,12 @@ class Dailymotion extends React.Component {
   }
 
   render() {
+    const { id, className } = this.props;
+
     return (
       <div
-        id={this.props.id}
-        className={this.props.className}
+        id={id}
+        className={className}
         ref={this.refContainer}
       />
     );
