@@ -42,7 +42,7 @@
     "@babel/preset-react": "7.0.0-beta.53",
     "@babel/register": "7.0.0-beta.53",
     "doctrine": "^2.1.0",
-    "eslint": "^4.19.1",
+    "eslint": "^5.0.0",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
