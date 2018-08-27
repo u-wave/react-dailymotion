@@ -34,6 +34,8 @@ class Dailymotion extends React.Component {
       mute: this.props.mute,
       origin: this.props.origin,
       quality: this.props.quality,
+      'queue-autoplay-neext': this.props.autoplayQueue,
+      'queue-enable': this.props.showQueue,
       'sharing-enable': this.props.sharing,
       start: this.props.start,
       'subtitles-default': this.props.subtitles,
@@ -230,6 +232,14 @@ Dailymotion.propTypes = {
    */
   quality: PropTypes.oneOf(['auto', '240', '380', '480', '720', '1080', '1440', '2160']),
   /**
+   * Whether to show the Up Next queue.
+   */
+  showQueue: PropTypes.bool,
+  /**
+   * Whether to play automatically the next item in the queue.
+   */
+  autoplayQueue: PropTypes.bool,
+  /**
    * Whether to display the sharing button or not.
    */
   sharing: PropTypes.bool,
@@ -400,6 +410,8 @@ Dailymotion.propTypes = {
 Dailymotion.defaultProps = {
   uiTheme: 'dark',
   quality: 'auto',
+  showQueue: false,
+  autoplayQueue: false,
 };
 
 export default Dailymotion;

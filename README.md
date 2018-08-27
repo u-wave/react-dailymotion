@@ -39,7 +39,9 @@ import Dailymotion from 'react-dailymotion';
 | showEndScreen | bool |  | Whether to enable the end screen or not. |
 | mute | bool |  | Whether to mute the video or not. |
 | origin | string |  | The domain of the page hosting the Dailymotion player. You might want to specify origin for extra security. |
-| quality | enum:<br>&nbsp;'240'<br>&nbsp;'380'<br>&nbsp;'480'<br>&nbsp;'720'<br>&nbsp;'1080'<br>&nbsp;'1440'<br>&nbsp;'2160'<br> |  | Specifies the _suggested_ playback quality for the video. |
+| quality | enum:<br>&nbsp;'auto'<br>&nbsp;'240'<br>&nbsp;'380'<br>&nbsp;'480'<br>&nbsp;'720'<br>&nbsp;'1080'<br>&nbsp;'1440'<br>&nbsp;'2160'<br> | 'auto' | Specifies the _suggested_ playback quality for the video. |
+| showQueue | bool | false | Whether to show the Up Next queue. |
+| autoplayQueue | bool | false | Whether to play automatically the next item in the queue. |
 | sharing | bool |  | Whether to display the sharing button or not. |
 | start | number |  | Specifies the time (in seconds) from which the video should start playing. |
 | subtitles | string |  | Specifies the selected subtitles language. |
