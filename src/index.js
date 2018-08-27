@@ -7,7 +7,9 @@ class Dailymotion extends React.Component {
   constructor(props) {
     super(props);
 
-    this.refContainer = this.refContainer.bind(this);
+    this.refContainer = (container) => {
+      this.container = container;
+    };
   }
 
   componentDidMount() {
@@ -144,13 +146,6 @@ class Dailymotion extends React.Component {
     if (typeof volume === 'number') {
       this.updateProps(['volume']);
     }
-  }
-
-  /**
-   * @private
-   */
-  refContainer(container) {
-    this.container = container;
   }
 
   render() {

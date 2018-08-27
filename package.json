@@ -3,7 +3,7 @@
   "version": "0.3.4",
   "description": "Dailymotion player component for React.",
   "main": "dist/react-dailymotion.js",
-  "module": "dist/react-dailymotion.es.js",
+  "module": "dist/react-dailymotion.mjs",
   "scripts": {
     "prepublish": "npm run build",
     "build": "ROLLUP=1 rollup -c",
