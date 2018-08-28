@@ -13,7 +13,7 @@
     "react-dom": "^16.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.0.0-rc.4",
+    "@babel/core": "^7.0.0",
     "babelify": "^9.0.0",
     "browserify": "^16.2.2"
   }
