@@ -5,13 +5,12 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import document from 'global/document';
+import env from 'min-react-env';
 import createDailymotion from './createDailymotion';
 
-global.window = { document };
-global.document = document;
+Object.assign(global, env);
 
-const render = (props) => {
+const render = (initialProps) => {
   const { Dailymotion, sdkMock, playerMock } = createDailymotion();
 
   let component;
@@ -20,28 +19,30 @@ const render = (props) => {
     constructor(dmProps) {
       super(dmProps);
 
-      this.state = dmProps;
+      this.state = { props: dmProps };
     }
 
     render() {
+      const { props } = this.state;
+
       return (
         <Dailymotion
           ref={(dailymotion) => { component = dailymotion; }}
-          {...this.state}
+          {...props}
         />
       );
     }
   }
 
-  const div = document.createElement('div');
+  const div = env.document.createElement('div');
   const container = new Promise((resolve) => {
-    ReactDOM.render(<Container {...props} ref={resolve} />, div);
+    ReactDOM.render(<Container {...initialProps} ref={resolve} />, div);
   });
 
   function rerender(newProps) {
     return container.then(wrapper => (
       new Promise((resolve) => {
-        wrapper.setState(newProps, () => {
+        wrapper.setState({ props: newProps }, () => {
           Promise.resolve().then(resolve);
         });
       })
