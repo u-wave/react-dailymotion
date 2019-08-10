@@ -18,7 +18,7 @@ class Dailymotion extends React.Component {
 
   componentDidUpdate(prevProps) {
     // eslint-disable-next-line react/destructuring-assignment
-    const changes = Object.keys(this.props).filter(name => this.props[name] !== prevProps[name]);
+    const changes = Object.keys(this.props).filter((name) => this.props[name] !== prevProps[name]);
 
     this.updateProps(changes);
   }
