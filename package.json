@@ -60,7 +60,8 @@
   },
   "greenkeeper": {
     "ignore": [
-      "expect"
+      "expect",
+      "load-script2"
     ]
   }
 }
