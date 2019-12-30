@@ -5,7 +5,7 @@
   "main": "dist/react-dailymotion.js",
   "module": "dist/react-dailymotion.mjs",
   "scripts": {
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
     "build": "ROLLUP=1 rollup -c",
     "lint": "eslint --cache .",
     "test": "npm run lint && TESTS=1 mocha",
