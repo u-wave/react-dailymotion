@@ -1,4 +1,3 @@
-/* global window */
 import loadScript from 'load-script2';
 
 let sdk = false;
