@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/u-wave/react-dailymotion#readme",
   "dependencies": {
-    "load-script2": "^1.0.1",
+    "load-script2": "^2.0.4",
     "prop-types": "^15.5.10"
   },
   "peerDependencies": {
