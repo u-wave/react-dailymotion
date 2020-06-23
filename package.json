@@ -8,7 +8,7 @@
     "prepare": "npm run build",
     "build": "ROLLUP=1 rollup -c",
     "lint": "eslint --cache .",
-    "test": "npm run lint && TESTS=1 mocha",
+    "test": "npm run lint && TESTS=1 mocha --require @babel/register",
     "docs": "node tools/generate-docs.js > generated-docs.md",
     "example": "npm install && cd example && npm install"
   },
