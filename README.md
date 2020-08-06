@@ -25,14 +25,13 @@ import Dailymotion from 'react-dailymotion';
 ```
 
 ## Props
-
 | Name | Type | Default | Description |
 |:-----|:-----|:-----|:-----|
 | video | string |  | A string representing a video ID – of the form xID (e.g. xwr14q) for public-accessible videos or kID (e.g. kABCD1234) for private-accessible videos. |
 | id | string |  | DOM ID for the player element. |
 | className | string |  | CSS className for the player element. |
-| width | union |  | Width of the player element. |
-| height | union |  | Height of the player element. |
+| width | number, string |  | Width of the player element. |
+| height | number, string |  | Height of the player element. |
 | paused | bool |  | Pause the video. |
 | autoplay | bool |  | Starts the playback of the video automatically after the player loads. |
 | controls | bool |  | Whether to display the player controls or not. This parameter only removes the control bar, but keeps the startscreen and the endscreen (useful on mobile devices where the video tag needs a direct user interaction to start the playback). |
@@ -78,6 +77,7 @@ import Dailymotion from 'react-dailymotion';
 | onVideoEnd | function |  | Sent when the player reaches the end of the content media resource. |
 | onVolumeChange | function |  | Sent when the player volume or mute state has changed. |
 | onWaiting | function |  | Sent when the player has to stop video playback for further buffering of content. |
+
 
 ## Related
 
