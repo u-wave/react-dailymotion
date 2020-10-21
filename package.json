@@ -54,7 +54,7 @@
     "mocha": "^8.0.1",
     "prop-types-table": "^1.0.0",
     "proxyquire": "^2.0.1",
-    "react": "^16.5.0",
+    "react": "^17.0.0",
     "react-dom": "^16.5.0",
     "react-test-renderer": "^16.5.0",
     "rollup": "^2.0.2"
