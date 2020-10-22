@@ -11,3 +11,6 @@ jobs:
     - node_js: 10
       name: Test on Node.js 10
       script: npm run test:mocha
+    - node_js: 12
+      name: Check code style
+      script: npm run test:lint
