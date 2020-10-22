@@ -9,7 +9,7 @@
     "build": "ROLLUP=1 rollup -c",
     "test:lint": "eslint --cache .",
     "test:mocha": "TESTS=1 mocha --require @babel/register",
-    "test": "npm run lint && npm run test:mocha",
+    "test": "npm run test:lint && npm run test:mocha",
     "docs": "prop-types-table src/index.js | md-insert README.md --header Props -i",
     "example": "npm install && cd example && npm install"
   },
@@ -35,7 +35,7 @@
     "prop-types": "^15.5.10"
   },
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0 || ^16.0.0"
+    "react": "^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -56,8 +56,8 @@
     "prop-types-table": "^1.0.0",
     "proxyquire": "^2.0.1",
     "react": "^17.0.0",
-    "react-dom": "^16.5.0",
-    "react-test-renderer": "^16.5.0",
+    "react-dom": "^17.0.0",
+    "react-test-renderer": "^17.0.0",
     "rollup": "^2.0.2"
   },
   "greenkeeper": {
