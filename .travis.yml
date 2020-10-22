@@ -14,3 +14,7 @@ jobs:
     - node_js: 12
       name: Check code style
       script: npm run test:lint
+    - node_js: 12
+      name: Test with React 16
+      before_script: npm install react@16 react-dom@16 react-test-renderer@16
+      script: npm run test:mocha
