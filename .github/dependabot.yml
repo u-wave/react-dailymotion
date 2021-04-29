@@ -5,10 +5,3 @@ updates:
   schedule:
     interval: daily
   open-pull-requests-limit: 10
-  ignore:
-  - dependency-name: expect
-    versions:
-    - "> 1.20.2"
-  - dependency-name: load-script2
-    versions:
-    - "> 1.0.1"
