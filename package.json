@@ -11,7 +11,7 @@
     "tests-only": "TESTS=1 mocha --require @babel/register",
     "test": "npm run lint && npm run tests-only",
     "docs": "prop-types-table src/index.js | md-insert README.md --header Props -i",
-    "example": "npm install && cd example && npm install"
+    "example": "npm run -w example build && npm run -w example start"
   },
   "repository": {
     "type": "git",
@@ -43,12 +43,12 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
     "@rollup/plugin-babel": "^5.0.3",
-    "eslint": "^7.4.0",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react": "^7.20.3",
-    "eslint-plugin-react-hooks": "^4.0.5",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "^19.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.27.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "expect": "^1.20.2",
     "md-insert": "^1.0.1",
     "min-react-env": "^1.0.0",
@@ -60,10 +60,10 @@
     "react-test-renderer": "^17.0.0",
     "rollup": "^2.0.2"
   },
-  "greenkeeper": {
-    "ignore": [
-      "expect",
-      "load-script2"
+  "workspaces": {
+    "packages": [
+      ".",
+      "./example"
     ]
   }
 }

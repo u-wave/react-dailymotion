@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Dailymotion from '..';
+import Dailymotion from 'react-dailymotion'; // eslint-disable-line import/no-unresolved
 
 const videos = [
   { id: 'x26ezrb', name: 'Hackathon BeMyApp/Dailymotion' },

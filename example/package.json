@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "react": "^16.0.0",
+    "react-dailymotion": "file:..",
     "react-dom": "^16.0.0"
   },
   "devDependencies": {
