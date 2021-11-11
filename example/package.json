@@ -5,17 +5,16 @@
   "version": "0.0.0-example",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "npm run build",
-    "build": "browserify app.js -t babelify > bundle.js"
+    "build": "esbuild --bundle app.js --loader:.js=jsx --sourcemap=inline --minify > bundle.js",
+    "start": "serve ."
   },
   "dependencies": {
-    "react": "^16.0.0",
+    "react": "^17.0.2",
     "react-dailymotion": "file:..",
-    "react-dom": "^16.0.0"
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "babelify": "^9.0.0",
-    "browserify": "^16.2.2"
+    "esbuild": "^0.13.13",
+    "serve": "^13.0.2"
   }
 }
