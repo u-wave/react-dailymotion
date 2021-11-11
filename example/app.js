@@ -28,10 +28,6 @@ class App extends React.Component {
     this.handleQuality = this.handleQuality.bind(this);
   }
 
-  selectVideo(index) {
-    this.setState({ videoIndex: index });
-  }
-
   handlePause(event) {
     this.setState({
       paused: event.target.checked,
@@ -56,6 +52,10 @@ class App extends React.Component {
     this.setState({
       quality: qualities[event.target.selectedIndex],
     });
+  }
+
+  selectVideo(index) {
+    this.setState({ videoIndex: index });
   }
 
   render() {

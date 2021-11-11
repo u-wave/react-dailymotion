@@ -7,9 +7,9 @@
   "scripts": {
     "prepare": "npm run build",
     "build": "ROLLUP=1 rollup -c",
-    "test:lint": "eslint --cache .",
-    "test:mocha": "TESTS=1 mocha --require @babel/register",
-    "test": "npm run test:lint && npm run test:mocha",
+    "lint": "eslint --cache .",
+    "tests-only": "TESTS=1 mocha --require @babel/register",
+    "test": "npm run lint && npm run tests-only",
     "docs": "prop-types-table src/index.js | md-insert README.md --header Props -i",
     "example": "npm install && cd example && npm install"
   },
