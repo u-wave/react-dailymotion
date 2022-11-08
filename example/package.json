@@ -15,6 +15,6 @@
   },
   "devDependencies": {
     "esbuild": "^0.15.0",
-    "serve": "^13.0.2"
+    "serve": "^14.1.0"
   }
 }
